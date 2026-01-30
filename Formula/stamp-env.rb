@@ -1,28 +1,35 @@
 class StampEnv < Formula
   desc "A CLI tool for deploying preset-based folder/file structures via symlinks"
   homepage "https://github.com/studio0188/stamp-env"
-  version "0.2.0"
+  version "0.3.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.2.0/stamp-env-aarch64-apple-darwin.tar.xz"
-      sha256 "5c8a502224ce6446912f38485e46d2d6fa210f0e3d676f78ccef8eec41d02e82"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.3.0/stamp-env-aarch64-apple-darwin.tar.xz"
+      sha256 "12da0692884400e16d57e20562f34a23d7c20cf3746a0c584d5f461f41ade556"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.2.0/stamp-env-x86_64-apple-darwin.tar.xz"
-      sha256 "3e8df4644371eb1a6ce820ca90cb72ab5754553d4ba94f01df3e8194849d10f4"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.3.0/stamp-env-x86_64-apple-darwin.tar.xz"
+      sha256 "21f0b7e7593511049a3f88a962bf56c3a0c994a0a2ca1d8458e80b7191733314"
     end
   end
-  if OS.linux? && Hardware::CPU.intel?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.2.0/stamp-env-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "34be1b2d8cb451e5abce4559e324319109cea0c0afc163d679a424af7086613b"
+  if OS.linux?
+    if Hardware::CPU.arm?
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.3.0/stamp-env-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "8aca7ad34d084b78400925965e031c05507c6121de5c18bc20ab2bd75dea0482"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.3.0/stamp-env-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "01c0ac755ee1aeed54d545de0c6788d5c3fdd50e4b213a6f16eb61bfadfc0a05"
+    end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":     {},
-    "x86_64-apple-darwin":      {},
-    "x86_64-pc-windows-gnu":    {},
-    "x86_64-unknown-linux-gnu": {},
+    "aarch64-apple-darwin":      {},
+    "aarch64-unknown-linux-gnu": {},
+    "x86_64-apple-darwin":       {},
+    "x86_64-pc-windows-gnu":     {},
+    "x86_64-unknown-linux-gnu":  {},
   }.freeze
 
   def target_triple
@@ -43,6 +50,7 @@ class StampEnv < Formula
   def install
     bin.install "stampenv" if OS.mac? && Hardware::CPU.arm?
     bin.install "stampenv" if OS.mac? && Hardware::CPU.intel?
+    bin.install "stampenv" if OS.linux? && Hardware::CPU.arm?
     bin.install "stampenv" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
