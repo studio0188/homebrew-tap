@@ -1,20 +1,20 @@
 class StampEnv < Formula
   desc "A CLI tool for deploying preset-based folder/file structures via symlinks"
   homepage "https://github.com/studio0188/stamp-env"
-  version "0.1.1"
+  version "0.2.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.1/stamp-env-aarch64-apple-darwin.tar.xz"
-      sha256 "d1e4ee10abc26c92aa7643f2e38abf2f1d01ffc1cccec707d404d48ffd634b40"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.2.0/stamp-env-aarch64-apple-darwin.tar.xz"
+      sha256 "5c8a502224ce6446912f38485e46d2d6fa210f0e3d676f78ccef8eec41d02e82"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.1/stamp-env-x86_64-apple-darwin.tar.xz"
-      sha256 "10c38672a2c51c57441af5655c64877d6ef1f1bbb7099251a95b99d1762f62f3"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.2.0/stamp-env-x86_64-apple-darwin.tar.xz"
+      sha256 "3e8df4644371eb1a6ce820ca90cb72ab5754553d4ba94f01df3e8194849d10f4"
     end
   end
   if OS.linux? && Hardware::CPU.intel?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.1/stamp-env-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "847121946bb6fe2a2317b42f4f09acea9999a8abfd4fc3c0beb9a82a360bbe9a"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.2.0/stamp-env-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "34be1b2d8cb451e5abce4559e324319109cea0c0afc163d679a424af7086613b"
   end
   license "MIT"
 
