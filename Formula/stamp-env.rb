@@ -1,20 +1,20 @@
 class StampEnv < Formula
-  desc "프리셋 기반 폴더/파일 구조를 심링크로 배포하는 CLI 도구"
+  desc "A CLI tool for deploying preset-based folder/file structures via symlinks"
   homepage "https://github.com/studio0188/stamp-env"
-  version "0.1.0"
+  version "0.1.1"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.0/stamp-env-aarch64-apple-darwin.tar.xz"
-      sha256 "390a0a05f78710f35c49c20439d441e1efa6e4c9eb1c6ecaf896debb7a334479"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.1/stamp-env-aarch64-apple-darwin.tar.xz"
+      sha256 "d1e4ee10abc26c92aa7643f2e38abf2f1d01ffc1cccec707d404d48ffd634b40"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.0/stamp-env-x86_64-apple-darwin.tar.xz"
-      sha256 "71ca5c2d1f971252971049a76f1f23fe19edd035c9a2e81de7e3c191fbd8660e"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.1/stamp-env-x86_64-apple-darwin.tar.xz"
+      sha256 "10c38672a2c51c57441af5655c64877d6ef1f1bbb7099251a95b99d1762f62f3"
     end
   end
   if OS.linux? && Hardware::CPU.intel?
-      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.0/stamp-env-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "43ae1aadd4bb95b352943a39f0f54d25e6281d88b20bc542f8bb3adadaffa54f"
+      url "https://github.com/studio0188/stamp-env/releases/download/v0.1.1/stamp-env-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "847121946bb6fe2a2317b42f4f09acea9999a8abfd4fc3c0beb9a82a360bbe9a"
   end
   license "MIT"
 
@@ -41,9 +41,9 @@ class StampEnv < Formula
   end
 
   def install
-    bin.install "stamp" if OS.mac? && Hardware::CPU.arm?
-    bin.install "stamp" if OS.mac? && Hardware::CPU.intel?
-    bin.install "stamp" if OS.linux? && Hardware::CPU.intel?
+    bin.install "stampenv" if OS.mac? && Hardware::CPU.arm?
+    bin.install "stampenv" if OS.mac? && Hardware::CPU.intel?
+    bin.install "stampenv" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
 
